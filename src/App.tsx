@@ -8,12 +8,16 @@ import Character from "./views/character";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/disney-list",
     element: <Home />,
   },
   {
     path: "/character/:id",
     element: <Character />,
+  },
+  {
+    path: "*",
+    element: <div>Not Found</div>,
   },
 ]);
 
@@ -22,7 +26,7 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }
