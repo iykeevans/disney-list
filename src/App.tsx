@@ -6,20 +6,23 @@ import "./App.css";
 import Home from "./views/home";
 import Character from "./views/character";
 
-const router = createBrowserRouter([
-  {
-    path: "/disney-list",
-    element: <Home />,
-  },
-  {
-    path: "/character/:id",
-    element: <Character />,
-  },
-  {
-    path: "*",
-    element: <div>Not Found</div>,
-  },
-]);
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/character/:id",
+      element: <Character />,
+    },
+    {
+      path: "*",
+      element: <div>Not Found</div>,
+    },
+  ],
+  { basename: import.meta.env.BASE_URL },
+);
 
 const queryClient = new QueryClient();
 
