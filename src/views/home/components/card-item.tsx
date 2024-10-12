@@ -9,6 +9,7 @@ import useRandomNumberGenerator from "@/utils/hooks/use-random-number-generator"
 
 import { TCharacter } from "@/services";
 import CONSTANTS from "@/utils/constants";
+import { Link } from "react-router-dom";
 
 const CardItem = (props: {
   isLoading: boolean;
@@ -60,7 +61,9 @@ const CardItem = (props: {
           </div>
 
           <button className="mt-auto self-start font-medium text-sky-400">
-            View details
+            <Link to={`character/${data![randomSelection]?._id}`}>
+              View details
+            </Link>
           </button>
         </motion.div>
       )}
