@@ -11,8 +11,14 @@ import ListItem from "./components/list-item";
 import QUERY_KEYS from "@/utils/query-keys";
 import useRandomNumberGenerator from "@/utils/hooks/use-random-number-generator";
 
-import { getDisneyCharacters } from "@/services";
+import { getDisneyCharacters, TCharacter } from "@/services";
 import useDebounce from "@/utils/hooks/use-debounce";
+
+const transformData = (data: TCharacter[] | TCharacter | undefined) => {
+  if (!data) return [];
+  if (!Array.isArray(data)) return [data];
+  return data;
+};
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,7 +27,7 @@ const Home = () => {
 
   const { isLoading, data: response } = useQuery({
     queryKey: [QUERY_KEYS.getDisneyCharacters, debouncedValue],
-    queryFn: () => getDisneyCharacters({ pageSize: 15, name: searchQuery }),
+    queryFn: () => getDisneyCharacters({ pageSize: 15, name: debouncedValue }),
   });
 
   const list = {
@@ -52,6 +58,7 @@ const Home = () => {
   };
 
   const { generate } = useRandomNumberGenerator();
+  const characters = transformData(response?.data?.data);
 
   return (
     <div className="w-[90%] md:max-w-2xl mx-auto py-16">
@@ -86,13 +93,13 @@ const Home = () => {
 
       {!isLoading && (
         <motion.div initial="from" animate="to" variants={list}>
-          {response?.data?.data?.map((character) => (
-            <motion.div variants={item} key={character._id}>
+          {characters?.map((character) => (
+            <motion.div variants={item} key={character?._id}>
               <ListItem
-                name={character.name}
-                film={character.films[0]}
-                imageUrl={character.imageUrl}
-                id={character._id}
+                name={character?.name}
+                film={character?.films[0]}
+                imageUrl={character?.imageUrl}
+                id={character?._id}
               />
             </motion.div>
           ))}

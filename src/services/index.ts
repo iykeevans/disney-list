@@ -41,3 +41,9 @@ export const getDisneyCharacters = (
     },
   );
 };
+
+export const getDisneyCharacter = (id: number | string) => {
+  return disneyAPI.get<{ info: TPagination; data: TCharacter }>(
+    `/character/${id}`,
+  );
+};
