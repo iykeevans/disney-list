@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Loader from "@/components/ui/loader";
 
@@ -29,7 +30,12 @@ const Character = () => {
       )}
 
       {!isLoading && (
-        <div className="flex gap-x-7">
+        <motion.div
+          className="flex gap-x-7"
+          initial="from"
+          animate="to"
+          variants={{ from: { opacity: 0, y: 20 }, to: { opacity: 1, y: 0 } }}
+        >
           <div className="h-[70px] w-[100px] bg-slate-200 rounded-md">
             <img
               loading="lazy"
@@ -48,7 +54,7 @@ const Character = () => {
             <div className="font-bold mt-6">Movies:</div>
             <div className="mt-0.5">{response?.data.data.films.join(", ")}</div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
