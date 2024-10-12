@@ -8,6 +8,7 @@ import useInterval from "@/utils/hooks/use-interval";
 import useRandomNumberGenerator from "@/utils/hooks/use-random-number-generator";
 
 import { TCharacter } from "@/services";
+import CONSTANTS from "@/utils/constants";
 
 const CardItem = (props: {
   isLoading: boolean;
@@ -15,6 +16,7 @@ const CardItem = (props: {
   startIndex: number;
 }) => {
   const { isLoading, data, startIndex } = props;
+  const imagePlaceholderUrl = CONSTANTS.IMAGE_PLACEHOLDER_URL;
 
   const [randomSelection, setRandomSelection] = useState(startIndex);
 
@@ -43,7 +45,12 @@ const CardItem = (props: {
           <div className="flex gap-x-5">
             <div className="bg-slate-200 w-10 h-10 rounded-md">
               <img
-                src={data![randomSelection]?.imageUrl}
+                loading="lazy"
+                src={
+                  data![randomSelection]?.imageUrl
+                    ? data![randomSelection]?.imageUrl
+                    : imagePlaceholderUrl
+                }
                 alt={`${data![randomSelection]?.name}_image`}
                 className="h-full w-full object-cover rounded-md"
               />

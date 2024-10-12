@@ -12,12 +12,15 @@ import QUERY_KEYS from "@/utils/query-keys";
 import useRandomNumberGenerator from "@/utils/hooks/use-random-number-generator";
 
 import { getDisneyCharacters } from "@/services";
+import useDebounce from "@/utils/hooks/use-debounce";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
+  const debouncedValue = useDebounce(searchQuery);
+
   const { isLoading, data: response } = useQuery({
-    queryKey: [QUERY_KEYS.getDisneyCharacters, searchQuery],
+    queryKey: [QUERY_KEYS.getDisneyCharacters, debouncedValue],
     queryFn: () => getDisneyCharacters({ pageSize: 15, name: searchQuery }),
   });
 
