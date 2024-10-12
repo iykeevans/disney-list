@@ -15,8 +15,9 @@ const CardItem = (props: {
   isLoading: boolean;
   data: TCharacter[] | undefined;
   startIndex: number;
+  pageSize: number;
 }) => {
-  const { isLoading, data, startIndex } = props;
+  const { isLoading, data, startIndex, pageSize } = props;
   const imagePlaceholderUrl = CONSTANTS.IMAGE_PLACEHOLDER_URL;
 
   const [randomSelection, setRandomSelection] = useState(startIndex);
@@ -24,7 +25,7 @@ const CardItem = (props: {
   const { generate } = useRandomNumberGenerator(startIndex);
 
   useInterval(() => {
-    setRandomSelection(generate(15));
+    setRandomSelection(generate(pageSize));
   }, 10000);
 
   return (
