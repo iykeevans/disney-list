@@ -5,11 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { Input } from "@/components/ui/input";
 import Loader from "@/components/ui/loader";
 
-import CardItem from "./components/card-item";
 import ListItem from "./components/list-item";
+import CardGrid from "./components/card-grid";
 
 import QUERY_KEYS from "@/utils/query-keys";
-import useRandomNumberGenerator from "@/utils/hooks/use-random-number-generator";
 
 import { getDisneyCharacters, TCharacter } from "@/services";
 import useDebounce from "@/utils/hooks/use-debounce";
@@ -57,26 +56,13 @@ const Home = () => {
     },
   };
 
-  const { generate } = useRandomNumberGenerator();
   const characters = transformData(response?.data?.data);
 
   return (
     <div className="w-[90%] md:max-w-2xl mx-auto py-16">
       <h1 className="text-3xl font-bold mb-9">Disney Characters</h1>
 
-      <div className="flex flex-col md:flex-row gap-x-5 gap-y-5">
-        <CardItem
-          isLoading={isLoading}
-          data={response?.data?.data}
-          startIndex={generate(15)}
-        />
-
-        <CardItem
-          isLoading={isLoading}
-          data={response?.data?.data}
-          startIndex={generate(15)}
-        />
-      </div>
+      <CardGrid />
 
       <div className="pt-11 pb-4">
         <Input

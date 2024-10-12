@@ -1,8 +1,12 @@
-import Loader from "@/components/ui/loader";
-import { getDisneyCharacter } from "@/services";
-import QUERY_KEYS from "@/utils/query-keys";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
+
+import Loader from "@/components/ui/loader";
+
+import CONSTANTS from "@/utils/constants";
+import QUERY_KEYS from "@/utils/query-keys";
+
+import { getDisneyCharacter } from "@/services";
 
 const Character = () => {
   const { id } = useParams();
@@ -29,7 +33,11 @@ const Character = () => {
           <div className="h-[70px] w-[100px] bg-slate-200 rounded-md">
             <img
               loading="lazy"
-              src={response?.data.data.imageUrl}
+              src={
+                response?.data.data.imageUrl
+                  ? response?.data.data.imageUrl
+                  : CONSTANTS.IMAGE_PLACEHOLDER_URL
+              }
               alt="character"
               className="rounded-md object-cover h-full w-full"
             />
