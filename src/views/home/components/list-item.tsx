@@ -23,6 +23,7 @@ const ListItem = (props: ListItemProps) => {
       <div className="flex items-center gap-x-2.5">
         <div className="w-8 h-6 rounded-md bg-slate-200 shrink-0">
           <img
+            loading="lazy"
             src={imageUrl ? imageUrl : imagePlaceholderUrl}
             alt={`${name}_image`}
             className="object-cover rounded-md h-full w-full shrink-0"
