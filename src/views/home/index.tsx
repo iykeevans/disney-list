@@ -80,7 +80,11 @@ const Home = () => {
       {!isLoading && (
         <motion.div initial="from" animate="to" variants={list}>
           {characters?.map((character) => (
-            <motion.div variants={item} key={character?._id}>
+            <motion.div
+              variants={item}
+              key={character?._id}
+              data-testid="list-item"
+            >
               <ListItem
                 name={character?.name}
                 film={character?.films[0]}
