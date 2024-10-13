@@ -1,51 +1,39 @@
-# React + TypeScript + Vite
+## This is a product feedback app visit [Disney List](https://iykeevans.github.io/disney-list/) to have a feel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome disney list. This project is built using React JS, Typescript, TailwindCSS, Vite, Framer Motion.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Follow the steps below:
 
-## Expanding the ESLint configuration
+```bash
+// Clone the repository
+git clone https://github.com/iykeevans/disney-list.git
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+// Switch to the cloned repository
+cd disney-list
 
-- Configure the top-level `parserOptions` property like this:
+// Install all needed dependencies
+npm install
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+// Run app on localhost
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+#### What has been done
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# disney-list
+- [x] display on the homepage a data list of 10-15 items
+- [x] have the possibility to search in this data list via a search field (a simple full-
+      text search is enough)
+- [x] on this homepage, display two random items that change every 10 seconds
+- [x] create a details page on another URL to display the details of this item.
+
+## Deployment
+
+This App was deployed with [Github Pages](https://iykeevans.github.io/disney-list/)
+
+## Lastly
+
+I am always available for feedback.
